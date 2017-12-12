@@ -146,28 +146,28 @@ var QueryExecutionTime = React.createClass({
     }
 });
 
-var CancelButton = React.createClass({
-    getInitialState: function() {
-        return {'cancelling': false};
-    },
-    handleClick: function() {
-        this.setState({'cancelling' : true });
-        fetch('/api/queries/cancel/' + this.props.pid, {method: 'post'}).then(function(response) {
-            console.log(response);
-        }).catch(function(error) {
-            console.log(error);
-        })
-    },
-    render: function() {
-        var spinner = "";
-        var cancelling = this.state.cancelling || this.props.cancellationInProgress;
-        if (cancelling) {
-            var spinner = <span className="fa fa-cog fa-spin"></span>;
-        }
-
-        return <button className="btn btn-warning btn-xs" onClick={this.handleClick} disabled={cancelling}>{spinner} Cancel</button>;
-    }
-});
+//var CancelButton = React.createClass({
+//    getInitialState: function() {
+//        return {'cancelling': false};
+//    },
+//    handleClick: function() {
+//        this.setState({'cancelling' : true });
+//        fetch('/api/queries/cancel/' + this.props.pid, {method: 'post'}).then(function(response) {
+//            console.log(response);
+//        }).catch(function(error) {
+//            console.log(error);
+//        })
+//    },
+//    render: function() {
+//        var spinner = "";
+//        var cancelling = this.state.cancelling || this.props.cancellationInProgress;
+//        if (cancelling) {
+//            var spinner = <span className="fa fa-cog fa-spin"></span>;
+//        }
+//
+//        return <button className="btn btn-warning btn-xs" onClick={this.handleClick} disabled={cancelling}>{spinner} Cancel</button>;
+//    }
+//});
 
 var AlertsButton = React.createClass({
     handleClick: function() {
@@ -213,7 +213,7 @@ var Query = React.createClass({
                 </td>
                 <td>
                     <div className="btn-group" role="group">
-                        <CancelButton pid={this.props.query.pid} cancellationInProgress={this.props.query.cancellation_in_progress} />
+//                        <CancelButton pid={this.props.query.pid} cancellationInProgress={this.props.query.cancellation_in_progress} />
                         <AlertsButton query={this.props.query} />
                     </div>
                 </td>
